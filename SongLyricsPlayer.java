@@ -20,7 +20,20 @@ public class SongLyricsPlayer {
                     e.printStackTrace();
                 }
             }
-            System.out.println(line.colorCode + line.text + AnsiColors.RESET);
+            printTypingEffect(line.text, line.colorCode, 50);
+            System.out.println();
+        }
+    }
+
+    public static void printTypingEffect(String text, String colorCode, int delayPerCharMs) {
+        for (char c : text.toCharArray()) {
+            System.out.print(colorCode + c + AnsiColors.RESET);
+            System.out.flush();
+            try {
+                Thread.sleep(delayPerCharMs);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
